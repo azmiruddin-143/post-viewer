@@ -28,26 +28,22 @@ const Header = async () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li><Link href={'/'}  >Home</Link></li>
+                            <li ><Link href={'/'}  >Home</Link></li>
                             {
                                 user &&
                                 <li><Link href={'/profile'} >My Profile</Link></li>
                             }
-                            <li><Link href={'/'}  >About</Link></li>
-                            <li><Link href={'/'}  >Contact Us</Link></li>
                         </ul>
                     </div>
                     <a className="text-black font-bold  text-3xl">Blog Viewer</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal text-xl px-1">
-                        <li className='hover:border-b border-black'><Link href={'/'}  >Home</Link></li>
-                        {
-                            user &&
+                        <li><Link href={'/'}  >Home</Link></li>
+                
                             <li><Link href={'/profile'} >My Profile</Link></li>
-                        }
-                        <li><Link href={'/'}  >About Us</Link></li>
-                        <li><Link href={'/'}  >Contact Us</Link></li>
+                        
+
                     </ul>
                 </div>
                 <div className="navbar-end">
