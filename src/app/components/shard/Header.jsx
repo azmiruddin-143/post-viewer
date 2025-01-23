@@ -1,7 +1,10 @@
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import Link from 'next/link';
 import React from 'react';
 
-const Header = () => {
+const Header = async () => {
+    const { getUser } = getKindeServerSession()
+    const user = await getUser()
     return (
         <div className='bg-base-200 '>
             <div className="navbar container mx-auto">
@@ -25,7 +28,10 @@ const Header = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li><Link href={'/'}  >Home</Link></li>
-                            <li><Link href={'/myprofile'}  >My Profile</Link></li>
+                            {
+                                user &&
+                                <li><Link href={'/profile'} >My Profile</Link></li>
+                            }
                             <li><Link href={'/'}  >About</Link></li>
                             <li><Link href={'/'}  >Contact Us</Link></li>
                         </ul>
@@ -41,10 +47,17 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <div className='flex gap-3' >
-                        <button className='bg-blue-400 py-2 px-4 rounded-md' >SignIn</button>
-                        <button className='bg-blue-400 py-2 px-4 rounded-md'>SignUp</button>
-                    </div>
+                    {
+                        user ?
+
+                            <Link href={'/api/auth/logout'} ><button className='bg-blue-400 py-2 px-4 rounded-md' >Logout</button></Link>
+                            :
+                            <div className='flex gap-3' >
+                                <Link href={'/api/auth/login'} ><button className='bg-blue-400 py-2 px-4 rounded-md' >SignIn</button></Link>
+
+                                <Link href={'/api/auth/register'} ><button className='bg-blue-400 py-2 px-4 rounded-md'>SignUp</button></Link>
+                            </div>
+                    }
                 </div>
             </div>
         </div>
