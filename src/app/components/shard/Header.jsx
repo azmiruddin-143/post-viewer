@@ -5,6 +5,7 @@ import React from 'react';
 const Header = async () => {
     const { getUser } = getKindeServerSession()
     const user = await getUser()
+    console.log(user);
     return (
         <div className='bg-base-200 '>
             <div className="navbar container mx-auto">
@@ -41,8 +42,11 @@ const Header = async () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal text-xl px-1">
                         <li className='hover:border-b border-black'><Link href={'/'}  >Home</Link></li>
-                        <li className='hover:border-b border-black'><Link href={'/myprofile'}  >My Profile</Link></li>
-                        <li><Link href={'/'}  >About</Link></li>
+                        {
+                            user &&
+                            <li><Link href={'/profile'} >My Profile</Link></li>
+                        }
+                        <li><Link href={'/'}  >About Us</Link></li>
                         <li><Link href={'/'}  >Contact Us</Link></li>
                     </ul>
                 </div>
