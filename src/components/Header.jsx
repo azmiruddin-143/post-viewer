@@ -30,14 +30,26 @@ const Header = async () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li ><Link href={'/'}  >Home</Link></li>
-                            <li><Link href={'/profile'} >My Profile</Link></li>
+                            <Link
+                                href={"/"}
+                                prefetch={true}
+                                className={"font-semibold hover:underline hidden sm:flex"}
+                            >
+                                Home
+                            </Link>
+
+                            <Link
+                                href={user ? "/profile" : "/api/auth/login"}
+                                className={"font-semibold hover:underline hidden sm:flex"}
+                            >
+                                Profile
+                            </Link>
                         </ul>
                     </div>
                     <a className="text-black font-bold  text-3xl">Blog Viewer</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal text-xl px-1">
+                    <ul className="menu flex gap-2 items-center menu-horizontal text-xl px-1">
                         <Link
                             href={"/"}
                             prefetch={true}
@@ -45,13 +57,7 @@ const Header = async () => {
                         >
                             Home
                         </Link>
-                        {/* <Link
-                            href={"/blogs"}
-                            prefetch={true}
-                            className={"font-semibold hover:underline hidden sm:flex"}
-                        >
-                            Blogs
-                        </Link> */}
+
                         <Link
                             href={user ? "/profile" : "/api/auth/login"}
                             className={"font-semibold hover:underline hidden sm:flex"}
@@ -63,27 +69,16 @@ const Header = async () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {/* {
-                        user ?
-
-                            <Link href={'/api/auth/logout'} ><button className='bg-blue-400 py-2 px-4 rounded-md' >Logout</button></Link>
-                            :
-                            <div className='flex gap-3' >
-                                <Link href={'/api/auth/login'} ><button className='bg-blue-400 py-2 px-4 rounded-md' >SignIn</button></Link>
-
-                                <Link href={'/api/auth/register'} ><button className='bg-blue-400 py-2 px-4 rounded-md'>SignUp</button></Link>
-                            </div>
-                    } */}
-
+                    
                     {user ? (
                         <>
                             <LogoutLink postLogoutRedirectURL="/">
-                                <button>Logout</button>
+                                <button className="bg-blue-400 text-white rounded-md py-2 px-4" >Logout</button>
                             </LogoutLink>
                         </>
                     ) : (
                         <LoginLink>
-                            <button>Login</button>
+                            <button className="bg-blue-400 text-white rounded-md py-2 px-4">Login</button>
                         </LoginLink>
                     )}
                 </div>
