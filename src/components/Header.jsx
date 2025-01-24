@@ -1,5 +1,4 @@
 
-// import Image from "next/image";
 import Link from "next/link";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -46,7 +45,7 @@ const Header = async () => {
                             </Link>
                         </ul>
                     </div>
-                    <a className="text-black font-bold  text-3xl">Blog Viewer</a>
+                    <Link href={'/'} ><a className="text-black font-bold  text-3xl">Blog Viewer</a></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu flex gap-3 items-center menu-horizontal text-xl px-1">
