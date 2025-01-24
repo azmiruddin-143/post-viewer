@@ -12,12 +12,12 @@ const Profile = async () => {
       <div className="pb-10">
         <h1 className="text-3xl md:text-4xl lg:text-5xl mt-3 tracking-widest font-semibold">
           Welcome{" "}
-          <span className="border-b-2 my-0 py-0">To Your</span>{" "}
+          <span className=" my-0 py-0">To Your</span>{" "}
           Profile
         </h1>
       </div>
       {/* profile container */}
-      <div className="px-6 py-10 shadow   lg:w-2/3 flex flex-wrap gap-6">
+      <div className="px-6 py-10 bg-gray-100 lg:w-2/3 flex flex-wrap gap-6">
         <div>
           <Image
             src={picture}

@@ -49,7 +49,7 @@ const Header = async () => {
                     <a className="text-black font-bold  text-3xl">Blog Viewer</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu flex gap-2 items-center menu-horizontal text-xl px-1">
+                    <ul className="menu flex gap-3 items-center menu-horizontal text-xl px-1">
                         <Link
                             href={"/"}
                             prefetch={true}
@@ -73,12 +73,12 @@ const Header = async () => {
                     {user ? (
                         <>
                             <LogoutLink postLogoutRedirectURL="/">
-                                <button className="bg-blue-400 text-white rounded-md py-2 px-4" >Logout</button>
+                                <button className="bg-blue-400 text-black rounded-md py-2 px-4" >Logout</button>
                             </LogoutLink>
                         </>
                     ) : (
-                        <LoginLink>
-                            <button className="bg-blue-400 text-white rounded-md py-2 px-4">Login</button>
+                        <LoginLink postLoginRedirectURL="/profile">
+                            <button className="bg-blue-400 text-black rounded-md py-2 px-4">Login</button>
                         </LoginLink>
                     )}
                 </div>
