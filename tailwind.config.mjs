@@ -1,15 +1,20 @@
-module.exports = {
-  darkMode: 'class',
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}", 
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require("daisyui"), 
-  ],
-  daisyui: {
-    themes: ["light"] 
-  },
+/** @type {import('tailwindcss').Config} */
+export default {
+	darkMode: ["class"],
+	content: [
+		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+	],
+	theme: {
+		
+	},
+	plugins: [
+		require("tailwindcss-animate"),
+		require("daisyui"),
+	],
+	daisyui: {
+		themes: ["light"],
+	},
 };
+

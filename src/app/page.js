@@ -1,5 +1,5 @@
+import PostCard from '@/components/PostCard';
 import React from 'react';
-import PostCard from './components/shard/PostCard';
 
 const page = async ()  => {
 
