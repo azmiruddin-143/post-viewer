@@ -10,7 +10,6 @@ const Profile = async () => {
         <h1>{email}</h1>
         <h2>{family_name}</h2>
         <h2>{given_name}</h2>
-        <h2>{picture}</h2>
         </div>
         ) : (
         redirect("/api/auth/login")
