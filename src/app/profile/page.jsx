@@ -13,10 +13,11 @@ const Profile = () => {
 
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const fetchUser = async  () => {
             if (isAuthenticated) {
                 try {
-                    const userInfo = await getUser();
+                    const userInfo = await  getUser();
+                    
                     setUser(userInfo);
                 } catch (error) {
                     console.error("Error fetching user information:", error);
