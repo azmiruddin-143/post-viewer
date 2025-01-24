@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 // azmir
 const Profile = () => {
+    const { isAuthenticated, isLoading, getUser } = useKindeBrowserClient();
     const router = useRouter();
     const [user, setUser] = useState(null);
     console.log(user);
     const [loading, setLoading] = useState(true);
-    const { isAuthenticated, isLoading, getUser } = useKindeBrowserClient();
+
 
     useEffect(() => {
         const fetchUser = async () => {
