@@ -5,19 +5,16 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 // azmir
 const Profile = () => {
-    const { isAuthenticated, isLoading, getUser } = useKindeBrowserClient();
     const router = useRouter();
     const [user, setUser] = useState(null);
-    console.log(user);
     const [loading, setLoading] = useState(true);
-
+    const { isAuthenticated, isLoading, getUser } = useKindeBrowserClient();
 
     useEffect(() => {
-        const fetchUser = async  () => {
+        const fetchUser = async () => {
             if (isAuthenticated) {
                 try {
-                    const userInfo = await  getUser();
-                    
+                    const userInfo = await getUser();
                     setUser(userInfo);
                 } catch (error) {
                     console.error("Error fetching user information:", error);
@@ -41,7 +38,6 @@ const Profile = () => {
     if (!user) {
         return null;
     }
-
     return (
         <section className="h-screen container mx-auto my-12">
             <h2 className="text-4xl font-semibold">
