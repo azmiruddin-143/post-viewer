@@ -1,12 +1,13 @@
 
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import Link from 'next/link';
-import React from 'react';
+// import Image from "next/image";
+import Link from "next/link";
+import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const Header = async () => {
-     const {getUser} = getKindeServerSession()
-     const user = await getUser()
-     console.log(user);
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
     return (
         <div className='bg-base-200 '>
             <div className="navbar container mx-auto">
@@ -30,22 +31,39 @@ const Header = async () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li ><Link href={'/'}  >Home</Link></li>
-                                <li><Link href={'/profile'} >My Profile</Link></li>
+                            <li><Link href={'/profile'} >My Profile</Link></li>
                         </ul>
                     </div>
                     <a className="text-black font-bold  text-3xl">Blog Viewer</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal text-xl px-1">
-                        <li><Link href={'/'}  >Home</Link></li>
-                
-                            <li><Link href={'/profile'} >My Profile</Link></li>
-                        
+                        <Link
+                            href={"/"}
+                            prefetch={true}
+                            className={"font-semibold hover:underline hidden sm:flex"}
+                        >
+                            Home
+                        </Link>
+                        {/* <Link
+                            href={"/blogs"}
+                            prefetch={true}
+                            className={"font-semibold hover:underline hidden sm:flex"}
+                        >
+                            Blogs
+                        </Link> */}
+                        <Link
+                            href={user ? "/profile" : "/api/auth/login"}
+                            className={"font-semibold hover:underline hidden sm:flex"}
+                        >
+                            Profile
+                        </Link>
+
 
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {
+                    {/* {
                         user ?
 
                             <Link href={'/api/auth/logout'} ><button className='bg-blue-400 py-2 px-4 rounded-md' >Logout</button></Link>
@@ -55,7 +73,19 @@ const Header = async () => {
 
                                 <Link href={'/api/auth/register'} ><button className='bg-blue-400 py-2 px-4 rounded-md'>SignUp</button></Link>
                             </div>
-                    }
+                    } */}
+
+                    {user ? (
+                        <>
+                            <LogoutLink postLogoutRedirectURL="/">
+                                <button>Logout</button>
+                            </LogoutLink>
+                        </>
+                    ) : (
+                        <LoginLink>
+                            <button>Login</button>
+                        </LoginLink>
+                    )}
                 </div>
             </div>
         </div>
